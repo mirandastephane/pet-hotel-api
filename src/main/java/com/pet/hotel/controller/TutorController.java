@@ -48,7 +48,7 @@ public class TutorController {
 	
 	// Update a Tutor
     @PutMapping("/tutor/{id}")
-    public Tutor updateReservation(@PathVariable(value = "id") Long tutorId,
+    public Tutor updateTutor(@PathVariable(value = "id") Long tutorId,
     		@RequestBody Tutor tutorDetails) throws Throwable {
 
         Tutor tutor = (Tutor) tutorRepository.findById(tutorId)
