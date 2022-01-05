@@ -22,7 +22,7 @@ import com.pet.hotel.repository.TutorRepository;
 @RestController
 @RequestMapping("/api")
 public class TutorController {
-	
+
 	@Autowired
 	private TutorRepository tutorRepository;
 
@@ -31,45 +31,45 @@ public class TutorController {
 	public List<Tutor> getAllTutor() {
 		return tutorRepository.findAll();
 	}
-	
+
 	// Create a new Tutor
 	@PostMapping("/tutor")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Tutor createTutor(@RequestBody Tutor tutor) {
 		return (Tutor) tutorRepository.save(tutor);
 	}
-	
+
 	// Get a Single Tutor
 	@GetMapping("/tutor/{id}")
 	public Tutor getTutorById(@PathVariable(value = "id") Long tutorId) throws Throwable {
 		return (Tutor) tutorRepository.findById(tutorId)
-				.orElseThrow(() -> new ResourceNotFoundException ("Tutor", "id", tutorId));
+				.orElseThrow(() -> new ResourceNotFoundException("Tutor", "id", tutorId));
 	}
-	
+
 	// Update a Tutor
-    @PutMapping("/tutor/{id}")
-    public Tutor updateTutor(@PathVariable(value = "id") Long tutorId,
-    		@RequestBody Tutor tutorDetails) throws Throwable {
+	@PutMapping("/tutor/{id}")
+	public Tutor updateTutor(@PathVariable(value = "id") Long tutorId, @RequestBody Tutor tutorDetails)
+			throws Throwable {
 
-        Tutor tutor = (Tutor) tutorRepository.findById(tutorId)
-                .orElseThrow(() -> new ResourceNotFoundException("Tutor", "id", tutorId));
+		Tutor tutor = (Tutor) tutorRepository.findById(tutorId)
+				.orElseThrow(() -> new ResourceNotFoundException("Tutor", "id", tutorId));
 
-        tutor.setNome(tutorDetails.getNome());
-        tutor.setDataNascimento(tutorDetails.getDataNascimento());
-        tutor.setCpf(tutorDetails.getCpf());
+		tutor.setNome(tutorDetails.getNome());
+		tutor.setDataNascimento(tutorDetails.getDataNascimento());
+		tutor.setCpf(tutorDetails.getCpf());
 
-        Tutor updatedTutor = (Tutor) tutorRepository.save(tutor);
-        return updatedTutor;
-    }
-    
-    // Delete a Tutor
-    @DeleteMapping("/tutor/{id}")
-    public ResponseEntity<?> deleteTutor(@PathVariable(value = "id") Long tutorId) throws Throwable {
-    	Tutor tutor = (Tutor) tutorRepository.findById(tutorId)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee", "id", tutorId));
+		Tutor updatedTutor = (Tutor) tutorRepository.save(tutor);
+		return updatedTutor;
+	}
 
-        tutorRepository.delete(tutor);
+	// Delete a Tutor
+	@DeleteMapping("/tutor/{id}")
+	public ResponseEntity<?> deleteTutor(@PathVariable(value = "id") Long tutorId) throws Throwable {
+		Tutor tutor = (Tutor) tutorRepository.findById(tutorId)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee", "id", tutorId));
 
-        return ResponseEntity.ok().build();
-    }
+		tutorRepository.delete(tutor);
+
+		return ResponseEntity.ok().build();
+	}
 }
