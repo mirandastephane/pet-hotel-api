@@ -19,19 +19,18 @@ import lombok.Data;
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
         allowGetters = true)
 public class Tutor {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column
-	private String nome;
-	
-	@Column
-	private String dataNascimento;
-	
-	@Column
-	private String cpf;
-	
-	
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String nome;
+
+    @Column
+    private String dataNascimento;
+
+    @Column
+    private String cpf;
+
 }
