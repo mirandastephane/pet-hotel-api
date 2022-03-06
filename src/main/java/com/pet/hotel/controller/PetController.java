@@ -33,38 +33,36 @@ public class PetController {
 
     // Create a new Pet
     @PostMapping("/pet")
-    public Pet createPet(@Valid @RequestBody Pet guest) {
-        return (Pet) petRepository.save(guest);
+    public Pet createPet(@Valid @RequestBody Pet pet) {
+        return (Pet) petRepository.save(pet);
     }
 
     // Update a Pet
     @PutMapping("/pet/{id}")
     public Pet updatePet(@PathVariable(value = "id") Long petId,
-                           @Valid @RequestBody Pet guestDetails) throws Throwable {
+                           @Valid @RequestBody Pet petDetails) throws Throwable {
 
-        Pet guest = (Pet) petRepository.findById(petId)
+        Pet pet = (Pet) petRepository.findById(petId)
                 .orElseThrow(() -> new ResourceNotFoundException("Room", "id", petId));
 
-        guest.setName(guestDetails.getName());
-        guest.setSurname(guestDetails.getSurname());
-        guest.setEmail(guestDetails.getEmail());
-        guest.setAddress(guestDetails.getAddress());
-        guest.setCity(guestDetails.getCity());
-        guest.setCountry(guestDetails.getCountry());
-        guest.setPersonalId(guestDetails.getPersonalId());
-        guest.setPhoneNumber(guestDetails.getPhoneNumber());
+        pet.setId(petDetails.getId());
+        pet.setName(petDetails.getName());
+        pet.setBreed(petDetails.getBreed());
+        pet.setSpecies(petDetails.getSpecies());
+        pet.setAge(petDetails.getAge());
+        pet.setTutorId(petDetails.getTutorId());
 
-        Pet updatedPet = (Pet) petRepository.save(guest);
+        Pet updatedPet = (Pet) petRepository.save(pet);
         return updatedPet;
     }
 
     // Delete a Pet
     @DeleteMapping("/pet/{id}")
     public ResponseEntity<?> deletePet(@PathVariable(value = "id") Long petId) throws Throwable {
-        Pet guest = (Pet) petRepository.findById(petId)
+        Pet pet = (Pet) petRepository.findById(petId)
                 .orElseThrow(() -> new ResourceNotFoundException("Room", "id", petId));
 
-        petRepository.delete(guest);
+        petRepository.delete(pet);
 
         return ResponseEntity.ok().build();
     }

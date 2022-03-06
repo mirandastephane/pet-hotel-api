@@ -51,9 +51,14 @@ public class TutorController {
         Tutor tutor = (Tutor) tutorRepository.findById(tutorId)
                 .orElseThrow(() -> new ResourceNotFoundException("Tutor", "id", tutorId));
 
-        tutor.setNome(tutorDetails.getNome());
-        tutor.setDataNascimento(tutorDetails.getDataNascimento());
+        tutor.setId(tutorDetails.getId());
+        tutor.setName(tutorDetails.getName());
+        tutor.setSurname(tutorDetails.getSurname());
+        tutor.setEmail(tutorDetails.getEmail());
+        tutor.setBirthDate(tutorDetails.getBirthDate());
+        tutor.setPhoneNumber(tutorDetails.getPhoneNumber());
         tutor.setCpf(tutorDetails.getCpf());
+        tutor.setPetId(tutorDetails.getPetId());
 
         Tutor updatedTutor = (Tutor) tutorRepository.save(tutor);
         return updatedTutor;
