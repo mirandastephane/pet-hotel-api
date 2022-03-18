@@ -21,23 +21,18 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column
     private Integer roomNumber;
 
-    @NotBlank
     @Column
     private Integer floor;
 
-    @NotBlank
     @Column
     private Integer people;
 
-    @NotBlank
     @Column
-    private Integer price;
+    private Double price;
 
-    @NotBlank
     @Column
     private Boolean is_available;
 

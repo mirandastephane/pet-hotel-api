@@ -19,19 +19,16 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column
     private String name;
 
-    @NotBlank
     @Column
     private String surname;
 
-    @NotBlank
+
     @Column
     private String email;
 
-    @NotBlank
     @Column
     private String password;
 

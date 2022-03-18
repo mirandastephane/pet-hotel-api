@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -27,43 +28,33 @@ public class Tutor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column
     private String name;
 
-    @NotBlank
     @Column
     private String surname;
 
-    @NotBlank
     @Column
     private Integer petId;
 
-    @NotBlank
     @Column
     private String email;
 
-    @NotBlank
     @Column
     private Date birthDate;
 
-    @NotBlank
     @Column
     private String phoneNumber;
 
-    @NotBlank
     @Column
     private String cpf;
 
-    @NotBlank
     @Column
     private String address;
 
-    @NotBlank
     @Column
     private String city;
 
-    @NotBlank
     @Column
     private String country;
 

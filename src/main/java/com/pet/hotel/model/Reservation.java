@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -21,35 +22,26 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column
     private Date startDate;
 
-    @NotBlank
     @Column
     private Date endDate;
 
-    @NotBlank
     @Column
     private Integer roomId;
 
-    @NotBlank
     @Column
     private Integer petId;
 
-    @NotBlank
     @Column
-    private Integer price;
+    private Double price;
 
-    @NotBlank
     @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date createdAt;
 
-    @NotBlank
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
 
